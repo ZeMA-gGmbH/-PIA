@@ -1,0 +1,248 @@
+<!--Component to open the stations in the Anlage-->
+
+<div class = "div" *ngIf="showAllProcessList">
+    <h1>
+        {{'Assembly Line'}}
+    </h1>
+    <div fxLayout="row wrap" fxLayoutGap = "16px grid">
+        <div fxFlex="25%" *ngFor="let station of   Stations ">
+            <mat-card >
+                <mat-card-header class="title_center">
+                    <mat-card-title>{{station.title}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src= {{station.img}} alt="" class="img">
+                <mat-card-content></mat-card-content>
+                <mat-card-actions>
+                    <button 
+                    style="width: 260px; align-self: center; background-color: rgb(158, 183,183);"
+                    mat-raised-button primary 
+                    (click)="onStationSelect(station.process)"
+                    >{{station.process}}</button>    
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<!--Component to open the subprocess-->
+
+<div *ngIf="showProcess" style="margin: auto; padding-bottom: 5px;" (backButton)="goBackToStation()">
+    <h1> Station {{processID}}: {{processName}}</h1>
+    <button mat-raised-button (click)="goBackToProcessList()">Back</button>
+</div>
+<mat-sidenav-container *ngIf="showProcess"> 
+    <mat-sidenav mode="side" opened class="mat-sidenav">
+        <div class="div">
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" (click)="showProduct()">Product</button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" (click)="showBetriebsmittel()" >Resources</button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" (click)="openGraph()">Measurement Data</button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" (click)="showVideo()" >Video</button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" (click)="showSensor()" ><a target="_blank" href="assets/DataSheets/Sensoruebersicht.pdf">Sensors</a></button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" [disabled]="true"><a target="_blank" href="assets/DataSheets/sample.txt">Shift Book</a></button>
+        </div>
+        
+
+    </mat-sidenav>
+    <mat-sidenav-content  >
+        <div 
+        *ngIf="playVideo"
+        style="height: fit-content; width:fit-content">
+            <iframe  [src]="safeSrc" width="900" height="562" frameborder="0" webkitallowfullscreen mozallowfullscreen
+            allowfullscreen></iframe>
+        </div>
+        <div 
+        *ngIf="showProcessImage"
+        class="container">
+            <div class="centerimg">
+            <img src={{processImage}} alt="" class="imgwrap">
+        </div>
+        </div>
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--Component to render the betriebsmittle cards-->
+
+<div class = "div" *ngIf="showBetriebsmittelBoolean">
+    <h1>
+        Assembly Line {{processID}}: Resources
+    </h1>
+    <button mat-raised-button (click)="goBackToStation()">Back</button>
+    <br>
+    <br>
+    <div fxLayout="row wrap" fxLayoutGap = "16px grid" *ngIf="showBetriebsmittelBoolean">
+        <div fxFlex="25%" *ngFor="let betrib of   betriebsmittle ">
+            <mat-card >
+                <mat-card-header class="title_center">
+                    <mat-card-title>{{betrib.name}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src= {{betrib.img}} alt="" class="img">
+                <mat-card-content></mat-card-content>
+                <mat-card-actions>
+                    <button
+                    style="width: 260px; background-color: rgb(158, 183,183);" 
+                    mat-raised-button primary 
+                    (click)="onBetriebsmittleSelect(betrib.name , betrib.technicalData , betrib.Anleitung  ,betrib.TechnicalZeichnung, betrib.img)">
+                        {{betrib.name}}</button>    
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<!--betriebsmittle detail component-->
+<div *ngIf="showBetriebsmittleDetail" style="margin: auto; padding-bottom: 5px;">
+    <h1> Assembly Line {{processID}}: {{BetriebsmittleName}}</h1>
+    <button mat-raised-button (click)="goBackToBetriebsmittle()">Back</button>
+</div>
+<mat-sidenav-container *ngIf="showBetriebsmittleDetail"> 
+    <mat-sidenav mode="side" opened class="mat-sidenav">
+        <div class="div">
+        <br>
+        <br>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" ><a target="_blank" href={{technicalData}}>Technical Data</a></button>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" ><a target="_blank" href={{Anleitung}}>User Manual</a></button>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" ><a target="_blank" href={{TechnicalZeichnung}}>Technical Drawings</a></button>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" (click)="openWissendatenbank()">Knowledgebase</button>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" (click)="openGraph()" >Measurement Data</button>
+        </div>
+        
+
+    </mat-sidenav>
+    <!--mat-sidenav-content  >
+        <div class="container">
+            <div class="centerimg">
+            <img src={{betriebImg}} alt="" class="imgwrap">
+        </div>
+        </div>
+        
+    </mat-sidenav-content-->
+    <mat-sidenav-content  >
+        <div class="container">
+            
+        <mat-card >
+            <mat-card-header>
+              <mat-card-title>INFORMATION</mat-card-title>
+              <div mat-card-avatar class="example-header-image"></div>
+            </mat-card-header>
+            <br>
+            <mat-divider inset></mat-divider>
+            <br>
+            <mat-card-content>
+             <span>Further Information.</span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="center">
+            <img src={{betriebImg}} alt="" style ="max-width: 350px; max-height: 350px; margin: auto;">
+        </div>
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--Component to render After clicking Produkt------------------------------------------------>
+<div class = "div" *ngIf="showProductList">
+    <h1>
+        {{'Product Variant'}}
+    </h1>
+    <button mat-raised-button (click)="goBackToStation()">Back</button>
+    <br>
+    <br>
+    <div fxLayout="row wrap" fxLayoutGap = "16px grid">
+        <div fxFlex="25%" *ngFor="let produkt of   produkte ">
+            <mat-card >
+                <mat-card-header class="title_center">
+                    <mat-card-title>{{produkt.variantID}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src= {{produkt.img}} alt="" class="img">
+                <mat-card-content></mat-card-content>
+                <mat-card-actions>
+                    <button 
+                    style="width: 300px; align-self: center; background-color: rgb(158, 183,183);"
+                    mat-raised-button primary 
+                    (click)="onProduktSelect(produkt.name, produkt.img)"
+                    >{{produkt.name}}</button>    
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<!--Product details component-->
+<div *ngIf="showProducDetails" style="margin: auto; padding-bottom: 5px;">
+    <h1> Product Detais: {{productName}}</h1>
+    <button mat-raised-button (click)="goBackToProduktList()">Back</button>
+</div>
+<mat-sidenav-container *ngIf="showProducDetails"> 
+    <mat-sidenav mode="side" opened class="mat-sidenav">
+        <div class="div">
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" [disabled]="true"><a target="_blank" href={{technicalData}}>Technical drawing</a></button>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" [disabled]="true"><a target="_blank" href={{Anleitung}}>CAD-File​</a></button>
+        </div>
+        
+
+    </mat-sidenav>
+    <mat-sidenav-content  >
+        <div class="container">
+            
+        <mat-card >
+            <mat-card-header>
+              <mat-card-title>INFORMATION</mat-card-title>
+              <div mat-card-avatar class="example-header-image"></div>
+            </mat-card-header>
+            <br>
+            <mat-divider inset></mat-divider>
+            <br>
+            <mat-card-content>
+             <span>Further Information.</span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="center">
+            <img src={{productImg}} alt="" style ="max-width: 350px; max-height: 350px; margin: auto;">
+        </div>
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--Component to render List of Sensors-->
+
+<div class = "div" *ngIf="showSensorList">
+    <h1>
+       Sensors List
+       
+    </h1>
+    <button mat-raised-button (click)="goBackToStation()">Back</button>
+    <br>
+    <br>
+    <div fxLayout="row wrap" fxLayoutGap = "16px grid" *ngIf="showSensorList">
+        <div fxFlex="25%" *ngFor="let betrib of   betriebsmittle ">
+            <mat-card >
+                <mat-card-header class="title_center">
+                    <mat-card-title>{{betrib.name}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src= {{betrib.img}} alt="" class="img">
+                <mat-card-content></mat-card-content>
+                <mat-card-actions>
+                    <button
+                    style="width: 260px; background-color: rgb(158, 183,183);" 
+                    mat-raised-button primary 
+                    (click)="onBetriebsmittleSelect(betrib.name , betrib.technicalData , betrib.Anleitung  ,betrib.TechnicalZeichnung, betrib.img)">
+                        {{betrib.name}}</button>    
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

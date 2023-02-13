@@ -1,0 +1,11 @@
+<br>
+<br>
+<button mat-button color="primary" class="buttonSizeMenu" (click)="onClicked('menu')">MENU</button>
+<br>
+<button mat-raised-button class="buttonSize" (click)="onClicked('Anlage')" [ngClass]="product ? 'buttonPrimary':'buttonTransparent'">Plant</button>
+<br>
+<button mat-raised-button class="buttonSize" (click)="onClicked('Wissensdatenbank')" [ngClass]="prozess ? 'buttonPrimary':'buttonTransparent'">Knowledge Base</button>
+<br>
+<button mat-raised-button class="buttonSize" (click)="onClicked('Leitfaden')" [ngClass]="Leitfaden ? 'buttonPrimary':'buttonTransparent'">Checklist</button>
+<br>
+<button mat-raised-button class="buttonSize" (click)="onClicked('Auswertung')" [ngClass]="Auswertung ? 'buttonPrimary':'buttonTransparent'"> <a (click)="goToLink('https://matlab.mathworks.com/')">Data Analysis</a> </button>

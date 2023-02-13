@@ -1,0 +1,25 @@
+
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened class="mat-sidenav">
+        <div class="div">
+        <br>
+        <br>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu focus" (click)="onClicked('WaMO')">Assembly Line</button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu focus" [disabled]="true">Plant X</button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" [disabled]="true">Plant Y</button>
+        <br>
+        <button mat-raised-button class="buttonSizeMenu" [disabled]="true" >Plant Z</button>
+        </div>
+        
+
+    </mat-sidenav>
+    <mat-sidenav-content *ngIf="showPlant" >
+        <div class="centerimg" >
+            <button mat-raised-button class="buttonOpen position" (click)="onOpenPlant()" >OPEN</button>
+            <img src= {{plantImg}} alt="" class="imgwrap">
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

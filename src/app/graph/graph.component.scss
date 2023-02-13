@@ -1,0 +1,29 @@
+#divChart{
+    display: block;
+    width: 400px;
+    height: 400px;
+}
+
+.canvas { border-style: solid }
+
+.graphs{
+    margin: 5rem;
+    max-width:  500px;
+    max-height: 500px;
+}
+
+.container{
+    max-width: 600px;
+    max-height: fit-content;
+}
+
+#divChart{
+    display: block;
+    width: 600px;
+    height: 600px;
+}
+.title_center {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+  }

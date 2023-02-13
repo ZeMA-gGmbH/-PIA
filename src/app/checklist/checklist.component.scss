@@ -1,0 +1,116 @@
+.mat-form-field {
+    margin-right: 4px;
+  }
+
+.div{
+  max-width:auto;
+  overflow: auto;
+}
+
+
+.mat-sidenav , .mat-sidenav-content{
+  padding: 16px;
+}
+
+.mat-sidenav-content{
+  height: 100%;
+  overflow-y: auto;
+}
+
+.mat-sidenav{
+  background-color: transparent;
+  width: 30rem;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.mat-sidenav-container{
+  height: 100%;
+  overflow: hidden;
+}
+
+.body{
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+}
+.rect{
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: black;
+  overflow: scroll;
+  vertical-align: middle;
+}
+
+.rectIn{
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  border-style: solid;
+  border-color: black;
+  overflow: scroll;
+  vertical-align: middle;
+}
+
+.mat-tab-group {
+  margin: 7px;
+  padding: 15px;
+  margin-bottom: 48px;
+  border: 5px;
+  padding: 2px;
+}
+
+.infoDiv{
+  border: 20px;
+  height: fit-content;
+  width: 95%;
+  margin-top: 10px;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  text-size-adjust: 10px;
+  font-size: large;
+  font-family: "Gill Sans", sans-serif;
+  text-align: justify;
+  text-justify: inter-word;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-block-width: unset;
+}
+
+.example-header-image {
+  background-image: url(/assets/img/info.png);
+  background-size: cover;
+}
+
+.example-header-tipp{
+  background-image: url(/assets/img/bulb2.png);
+  background-size: cover;
+}
+
+.example-header-hin{
+  background-image: url(/assets/img/hienweis.png);
+  background-size: cover;
+}
+
+.mat-card{
+  max-width: 80% ;
+  max-height:50% ;
+  margin: auto;
+  padding: auto;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+}
+
+.mat-card-content{
+  text-size-adjust: 10px;
+  font-size: large;
+  font-family: "Gill Sans", sans-serif;
+  text-align: justify;
+  text-justify: inter-word;
+  
+}

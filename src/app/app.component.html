@@ -1,0 +1,64 @@
+<!--nb-layout>
+
+  <nb-layout-header fixed-->
+  <!-- Insert header here -->
+  <!--/nb-layout-header>
+
+  <nb-layout-column-->
+    <div>
+      <app-nav-bar></app-nav-bar>
+      
+    </div>
+    
+    <div class="body">
+    
+      <mat-sidenav-container>
+        <mat-sidenav mode="side" opened class="mat-sidenav">
+          <app-menu (displayImg) = "displayImg($event)"
+                    (displayFeature) = "displayFeature($event)"
+                    (displayHeading)= "displayHeading($event)"></app-menu>
+    </mat-sidenav>
+    
+      <mat-sidenav-content >
+        <br>
+        <br>
+        <h2 class="box">{{heading}}</h2>
+        <div allign="center" class="body rect">
+          <app-graph *ngIf="graph"></app-graph>
+          <app-anlage *ngIf="anlage"
+                      (displayAnlageDetail)= "anlageToDisplay($event)"> </app-anlage>
+          <app-anlage-details *ngIf="this.anlageDetial" 
+                              (displayInfo) = "displayInfo($event)"
+                              (displayGraph)="displayGraph($event)"
+                              [anlageName]="anlageName">
+                            </app-anlage-details>
+          <app-info-page  *ngIf="infoPage"></app-info-page>
+          <div class="div" *ngIf="checkFeature">
+            <img src={{img}} alt={{feature}} class="img">
+          </div>
+          
+          <app-tree-view *ngIf="treeView"
+          (displayInfo) = "displayInfo($event)"></app-tree-view>
+            
+            <app-checklist *ngIf="checkList"></app-checklist>
+          </div>
+        </mat-sidenav-content>
+        
+      </mat-sidenav-container>
+      
+    </div>
+    
+      <div>
+      <app-footer></app-footer>
+    </div>
+    
+    
+  <!--/nb-layout-column>
+
+  <nb-layout-footer fixed-->
+  <!-- Insert footer here -->
+  <!--/nb-layout-footer>
+
+</nb-layout-->
+<!--h4>Histogram</h4>
+            <img src="./../assets/Histogram.svg" alt="" style="height: 40rem; width: 40rem;"-->

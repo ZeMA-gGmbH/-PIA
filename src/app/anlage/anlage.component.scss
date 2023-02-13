@@ -1,0 +1,90 @@
+.div{
+    text-align: center
+}
+
+.mat-sidenav , .mat-sidenav-content{
+    padding: 16px;
+  }
+  
+  .mat-sidenav-content{
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .mat-sidenav{
+    background-color: transparent;
+    width: 30rem;
+    height: 100%;
+    overflow-y: hidden;
+  }
+  
+  .mat-sidenav-container{
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .buttonSizeMenu{
+    height: 6rem;
+    width: 70%;
+    font-size: x-large;
+    text-align: center;
+    display: block;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    
+  }
+
+  .buttonOpen{
+    height: 6rem;
+    width: fit-content;
+    font-size: x-large;
+    text-align: center;
+    display: block;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(156, 154, 154, 0.721)
+  }
+
+  .position{
+    position: absolute;
+    right:    20px;
+    bottom:   15px;
+  }
+
+  .center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+
+    max-width: 50rem;
+    max-height: 50rem;
+ }
+
+ .centerimg{
+  position: relative;
+  height: 100%;
+ }
+
+ .imgwrap{
+  width: 80%;
+  height: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ }
+
+ .buttonPrimary{
+  background-color: rgb(1,72,114);
+  color: white;
+} 
+
+.focus:focus{
+  background-color: rgb(1,72,114);
+  color: white;
+}

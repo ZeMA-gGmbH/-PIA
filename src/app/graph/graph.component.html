@@ -1,0 +1,36 @@
+
+  <div >
+    <h1 class="title_center">Plotting the process Data</h1>
+    <button mat-raised-button float-left >Back</button>
+  </div>
+<br>
+<br>
+  <div class="col-sm-5 form-group">
+    <span>
+      Please uplaod your data csv file here to plot a graph!    
+    </span>
+    <br>
+    <br>
+    <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx , .csv">
+  </div>
+
+
+  <div >
+    <div class="container"  >
+      <div class="card mt-2" style="max-width: 800px; max-height: 800px">
+        <div class="card-body">
+          <h4 class="card-title">Bar Plot of Process Data</h4>
+          <canvas id="myChart">
+          </canvas>
+        </div>
+      </div>
+      <div  *ngIf="false" class="card mt-2" style="max-width: 800px; max-height: 800px">
+        <div class="card-body">
+          <h4 class="card-title">Line Plot of Process Data</h4>
+          <canvas id="lineChart">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  

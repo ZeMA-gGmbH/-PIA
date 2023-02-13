@@ -1,0 +1,228 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened class="mat-sidenav">
+    <div class="rect body" allign="center" >
+      <div class="div">
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+            <button mat-icon-button disabled></button>
+            <mat-checkbox class="checklist-leaf-node"
+                          [checked]="checklistSelection.isSelected(node)"
+                          (change)="checklistSelection.toggle(node);">
+                          <button mat-button (click)="onClicked(node.item)" > {{node.item}} </button>
+            </mat-checkbox>
+          </mat-tree-node>
+        
+          <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
+            <button mat-icon-button disabled></button>
+            <mat-form-field>
+              <input matInput #itemValue placeholder="New item...">
+            </mat-form-field>
+            <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
+          </mat-tree-node>
+        
+          <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+            <button mat-icon-button matTreeNodeToggle
+                    [attr.aria-label]="'toggle ' + node.filename">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+            </button>
+            <mat-checkbox [checked]="descendantsAllSelected(node)"
+                          [indeterminate]="descendantsPartiallySelected(node)"
+                          (change)="todoItemSelectionToggle(node)"><button mat-button (click)="onClicked(node.item)" > {{node.item}} </button></mat-checkbox>
+            <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
+          </mat-tree-node>
+        </mat-tree>
+      </div>
+    </div>
+  </mat-sidenav>
+ <mat-sidenav-content>
+
+  <div class="rect body" allign="center">
+    <!--mat-tab-group animationDuration="250ms" *ngIf="isNodeClicked">
+      <mat-tab label="INFO">
+        <br>
+        <div class="infoDiv">
+          {{this.nodeData[0].info}} 
+        </div>
+        </mat-tab>
+      <mat-tab label="HINWEIS">
+        <br>
+        <div class="infoDiv">
+          {{this.nodeData[0].hinweis}}
+        </div>
+      </mat-tab>
+      <mat-tab label="TIPP">
+        <br>
+        <div class="infoDiv">
+          {{this.nodeData[0].tipp}}
+        </div>
+      </mat-tab>
+    </mat-tab-group-->
+    <div *ngIf="!isNodeClicked">
+      <br>
+    <br>
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title>FOREWORD</mat-card-title>
+        <div mat-card-avatar class="example-header-image"></div>
+      </mat-card-header>
+      <br>
+      <mat-divider inset></mat-divider>
+      <br>
+      <mat-card-content>
+        <span>
+          Data quality plays an important role to fully exploit the potential of artificial intelligence or machine learning in industry, especially in assembly. The following checklist was developed as part of a cooperation between the Lab for Measurement Technology and the Chair of Assembly Systems within the framework of the ERDF project "Messtechnisch gestützte Montage" and the follow-up project "iTecPro – Erforschung und Entwicklung von innovativen Prozessen und Technologien für die Produktion der Zukunft". It is intended to support industrial users, especially in small and medium-sized enterprises (SMEs), in recording high-quality data to minimize the effort required for analysis and increase the results' significance.
+        </span>
+        <br>
+        <br>
+        <span>
+          This checklist was initially published in German by Schnur et al. on Zenodo and has now been translated into English. 
+        </span>
+        <br>
+        <br>
+        <span>
+          Special thanks go to Prof. Dr. Andreas Schütze, Prof. Dr. -Ing. Rainer Müller, Dr. -Ing. Leonie Mende, Mr. Tizian Schneider M.Sc., Ms. Tanja Dorst M.Sc, Mr. Jacob Decker, and Ms. Pia Lechner for their support in creating this checklist and their knowledge input. 
+        </span>
+
+      </mat-card-content>
+    </mat-card>
+    <br>
+    </div>
+   
+    <div *ngIf="!isNodeClicked">
+      <br>
+    <br>
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title>Objectives, limitations, and focus of the checklist</mat-card-title>
+       
+      </mat-card-header>
+      <br>
+      <mat-divider inset></mat-divider>
+      <br>
+      <mat-card-content>
+        <span>
+          This checklist is intended to support the planning of a project to use machine learning on an existing assembly line (brownfield). Therefore, the focus is not on acquiring a new plant or data planning for prototypes in product development. Nevertheless, the checklist can also provide orientation for these use cases. It pursues the approach of recording valid data as precisely as possible through the contribution of expert knowledge and making it available. Due to the high diversity of available machine learning methods, data analysis is only dealt with at a basic level within the scope of this document.  
+        </span>
+        <br>
+        <br>
+        <span>
+          The primary target groups of this checklist are manufacturing SMEs and large companies. 
+        </span>
+      </mat-card-content>
+    </mat-card>
+    <br>
+    </div>
+    <div>
+      <br>
+    <br>
+    <mat-card *ngIf="isNodeClicked && isInfoPresent">
+      <mat-card-header>
+        <mat-card-title>INFO</mat-card-title>
+        <div mat-card-avatar class="example-header-image"></div>
+      </mat-card-header>
+      <br>
+      <mat-divider inset></mat-divider>
+      <br>
+      <mat-card-content>
+        {{this.nodeData[0].info}}
+      </mat-card-content>
+    </mat-card>
+    <br>
+    </div>
+
+    <div>
+      <mat-card *ngIf="isNodeClicked && isHienweispresent">
+        <mat-card-header>
+          <mat-card-title>HINWEIS</mat-card-title>
+          <div mat-card-avatar class="example-header-hin"></div>
+        </mat-card-header>
+        <br>
+        <mat-divider inset></mat-divider>
+        <br>
+        <mat-card-content>
+          {{this.nodeData[0].hinweis}}
+        </mat-card-content>
+      </mat-card>
+      <br>
+      <mat-card *ngIf="isNodeClicked && istippPresent">
+        <mat-card-header>
+          <mat-card-title>TIPP</mat-card-title>
+          <div mat-card-avatar class="example-header-tipp"></div>
+        </mat-card-header>
+        <br>
+        <mat-divider inset></mat-divider>
+        <br>
+        <mat-card-content>
+          {{this.nodeData[0].tipp}}
+        </mat-card-content>
+      </mat-card>
+      <br>
+      </div>
+      <!------------------------Comment card---------------->
+      <!--div>
+      <mat-card *ngIf="isNodeClicked">
+        <mat-card-header>
+          <mat-card-title>Comment</mat-card-title>
+          <div mat-card-avatar class="example-header-tipp"></div>
+        </mat-card-header>
+        <br>
+        <mat-divider inset></mat-divider>
+        <br>
+        <mat-card-content>
+          Comment: <input type="text" [(ngModel)]="comment" (change)="commentAdded()">
+          <br>
+          {{this.comment}}
+          <br>   
+          <input type="file" class="file-upload" onchange="console.log(event.target.files)">
+        </mat-card-content>
+      </mat-card>
+      </div-->
+
+      <div>
+        <mat-card *ngIf="isNodeClicked">
+          <mat-card-header>
+            <mat-card-title>Comment</mat-card-title>
+            <div mat-card-avatar class="example-header-tipp"></div>
+          </mat-card-header>
+          <br>
+          <mat-divider inset></mat-divider>
+          <br>
+          <mat-card-content>
+            <form>
+              <div class="row">
+                <div class="col-sm-5 form-group">
+                  <input type="text" id="comment" class="form-control" #comment>
+                </div>
+                <div class="col-sm-2 form-group">
+                  <input type="file" class="file-upload" onchange="console.log(event.target.files)">
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xs-12">
+                  <button class="btn btn-success" (click)="onAddComment()">ADD</button>
+                </div>
+              </div>
+            </form>
+            <br>
+            <ul class="list-group" *ngFor="let com of comments">
+              <a class="list-group-item" style="cursor: pointer;">{{com.comment}}</a>
+             <br>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+        </div>
+
+
+
+    </div> <!--importan closing div-->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+

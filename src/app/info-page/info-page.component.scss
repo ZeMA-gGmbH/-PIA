@@ -1,0 +1,39 @@
+.example-header-image {
+    background-image: url(/assets/img/info.png);
+    background-size: cover;
+  }
+
+  .mat-card{
+    max-width: 80% ;
+    max-height:50% ;
+    margin: auto;
+    padding: auto;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+  }
+  
+  .mat-card-content{
+    text-size-adjust: 10px;
+    font-size: large;
+    font-family: "Gill Sans", sans-serif;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .h1{
+    text-size-adjust: 20px;
+    font-size: large;
+    font-family: "Gill Sans", sans-serif;
+    text-align: justify;
+    text-justify: inter-word;
+    .span{
+
+      font-style: bold;
+    }
+  }
+
+  .div{
+    margin: auto;
+    padding: auto;
+  }

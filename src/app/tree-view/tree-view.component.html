@@ -1,0 +1,237 @@
+
+  <!--div  style="margin: auto; padding-bottom: 5px;" *ngIf="!montage">
+    <h1>Knowledgebase</h1>
+  </div-->
+  <mat-sidenav-container *ngIf="!montage && !lesosnLearned" > 
+    <mat-sidenav mode="side" opened class="mat-sidenav">
+        <div class="div">
+        <br>
+        <br>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" (click)="openLesson()">Lessons Learned Register</button>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" (click)="openTreeview()">Assembly Processes</button>
+        <br>
+        <button mat-raised-button class="buttonSizeBetrieb" [disabled]="true">Knowledge Base 3</button>
+        </div>
+    </mat-sidenav>  
+</mat-sidenav-container>
+
+
+<div *ngIf="montage">
+    <div class="tree body-tree">
+      <ul>
+        <li><a href="#" style="background-color: rgb(1,72,114); color:white;">Montageprozesse</a>
+          <ul *ngIf="true">
+            <li *ngIf="!showFugen && !showSondernoperation && !showInbetrieb && !showHilfsprozesse"><a href="#" (click) ="onClickHandhaben()">Handhaben</a>
+              <ul *ngIf="showFugen || showhandhaben">
+                <li><a href="#">Zuführen</a></li>
+                <li><a href="#">Transportieren</a></li>
+                <li><a href="#">Sichern</a></li>                       
+              </ul>
+            </li>
+            <li *ngIf="!showhandhaben && !showSondernoperation && !showInbetrieb && !showHilfsprozesse" ><a href="#"
+              (click) ="onClickFugen()" 
+              [ngClass]="showFugen ? 'selctedNode':'highlightNode'"
+              >Fügen <br /> DIN 8593 <br /> Teil 0</a>
+              <ul *ngIf="showFugen">
+                <li *ngIf="!showAnpressen" ><a href="#" >Zusammensetzen</a></li>
+                <li><a href="#" 
+                  (click)="onClickAnpressen()"
+                  [ngClass]="showAnpressen ? 'selctedNode':'highlightNode'"
+                  >An- und Einpressen</a>
+                  <ul *ngIf="showAnpressen">
+                    <li><a href="#" (click)="onClickSchrauben()" [ngClass]="showSchrauben ? 'selctedNode':'highlightNode'">Schrauben</a>
+                      <ul *ngIf="showSchrauben">
+                        <li *ngIf="!werkzeug"><a href="#">Schraubverfahren</a></li>
+                        <li *ngIf="!werkzeug"><a href="#">Literatur</a></li>
+                        <li><a href="#" 
+                          (click)="onClickWerkzeug()"
+                          [ngClass]="werkzeug ? 'selctedNode':'highlightNode'">Werkzeug</a>
+                          <ul *ngIf="werkzeug">
+                            <li><a href="#" [ngClass]="werkzeug ? 'selctedNode':'highlightNode'">Schraubwerkzeuge</a>
+                              <ul>
+                                <li><a href="#">Steuerungsprinzip</a>
+                                  <ul><a href="#" >Schlagschrauber</a></ul>
+                                  <ul><a href="#" >Impulsschrauber</a></ul>
+                                  <ul><a href="#" >Servoschrauber</a></ul>
+                                </li>
+                                <li><a href="#">Bauformen</a>
+                                  <ul><a href="#" >Gerade Form</a></ul>
+                                  <ul><a href="#">Pistolengriffschrauber</a></ul>
+                                  <ul><a href="#" (click)="showInfo('showInfoPage')">Winkelschrauber</a></ul>
+                                  <!--div class="vertical-menu ">
+                                    <a href="#" class="a">Gerade Form</a>
+                                    <br>
+                                    <a href="#" class="a">Pistolengriffschrauber</a>
+                                    <br>
+                                    <a href="#" class="a">Winkelschrauber</a>
+                                    <br>
+                                    <a href="#" class="a">Blank</a>
+                                  </div-->
+                                </li>
+                                <li><a href="#">Antriebsmedium</a>
+                                  <ul><a href="#">Hydraulikschrauber</a></ul>
+                                  <ul><a href="#" >Druckluftschrauber</a></ul>
+                                  <ul><a href="#">Elektroschrauber</a></ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li *ngIf="!werkzeug" ><a href="#">Blank</a></li>    
+                      </ul>
+                    </li>
+                    <li *ngIf="!showSchrauben" ><a href="#">Klemmen</a></li>
+                    <li *ngIf="!showSchrauben"><a href="#">Klammern</a></li>
+                    <li *ngIf="!showSchrauben"><a href="#">Fügen durch Pressen</a></li>
+                    <li *ngIf="!showSchrauben"><a href="#">Einschlagen, Nageln</a></li>
+                    <li *ngIf="!showSchrauben"><a href="#">Verkeilen</a></li>
+                    <li *ngIf="!showSchrauben"><a href="#">Verspannen</a></li>      
+                  </ul>
+                </li>
+                <li *ngIf="!showAnpressen"><a href="#">Fügen durch Urformen</a></li>
+                <li *ngIf="!showAnpressen"><a href="#">Fügen durch Umformen</a></li>
+                <li *ngIf="!showAnpressen"><a href="#">Schweißen</a></li>
+                <li *ngIf="!showAnpressen"><a href="#">Löten, Kleben</a></li>
+                <li *ngIf="!showAnpressen"><a href="#">Textiles Fügen</a></li>
+                <li *ngIf="!showAnpressen"><a href="#">Füllen</a></li>
+              </ul>
+            </li>
+            <li *ngIf="!showFugen && !showhandhaben && !showSondernoperation && !showHilfsprozesse" ><a href="#" (click)="onClickInbetriebnahme()">Inbetriebnahme</a>
+              <ul *ngIf="showFugen || showInbetrieb">
+                <li><a href="#">Justieren</a></li>
+                <li><a href="#">Konfigurieren</a></li>
+                <li><a href="#">Prüfen</a></li>
+              </ul>
+            </li>
+            <li *ngIf="!showFugen && !showhandhaben && !showSondernoperation && !showInbetrieb"><a href="#" (click)="onClickHilfsprozesse()">Hilfsprozesse</a>
+              <ul *ngIf="showFugen || showHilfsprozesse">
+                <li><a href="#" >Speichern</a></li>
+                <li><a href="#" >Menge verändern</a></li>
+                <li><a href="#" >Erwärmen, Kühlen</a></li>
+                <li><a href="#" >Kontrollieren</a></li>
+              </ul>
+            </li>
+            <li *ngIf="!showFugen && !showhandhaben && !showInbetrieb && !showHilfsprozesse"><a href="#" (click)="onClickSonderoperationen()">Sonderoperationen</a>
+              <ul *ngIf="showFugen || showSondernoperation">
+                <li><a href="#" >Reinigen</a></li>
+                <li><a href="#" >Nacharbeiten</a></li>
+                <li><a href="#" >Kennzeichnen</a></li>
+                <li><a href="#" >Verpacken</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+   </div>
+</div>
+
+
+
+
+<mat-sidenav-container *ngIf="lesosnLearned"> 
+  <mat-sidenav mode="side" opened class="mat-sidenav">
+      <div class="div">
+      <br>
+      <button mat-raised-button class="buttonSizeMenu" (click)="onclick('Preparation and project planning')" >Preparation and project planning</button>
+      <br>
+      <button mat-raised-button class="buttonSizeMenu" [disabled]="true" (click)="onclick('Measurement and data planning')" >Measurement and data planning</button>
+      <br>
+      <button mat-raised-button class="buttonSizeMenu" [disabled]="true" (click)="onclick('Data acquisition')">Data acquisition</button>
+      <br>
+      <button mat-raised-button class="buttonSizeMenu"  [disabled]="true" (click)="onclick('Data check and data cleansing')">Data check and data cleansing</button>
+      <br>
+      <button mat-raised-button class="buttonSizeMenu" [disabled]="true" (click)="onclick('Data evaluation and modeling')" >Data evaluation and modeling</button>
+      <br>
+      <button mat-raised-button class="buttonSizeMenu" [disabled]="true" (click)="onclick('Project completion')">Project completion</button>
+      </div>
+      
+
+  </mat-sidenav>
+  <mat-sidenav-content  >
+    <mat-card class="overflow:scroll">
+      <mat-card-header>
+        <!--mat-card-title>{{this.heading}}</mat-card-title-->
+        <br>
+        <mat-card-title>Preparation and project planning</mat-card-title>
+        <div mat-card-avatar class="example-header-image"></div>
+      </mat-card-header>
+      <br>
+      <mat-divider inset></mat-divider>
+      <br>
+      <!--mat-card-content>
+        {{this.lessoninfo}}
+      </mat-card-content-->
+      <mat-card-content>
+       <span STYLE="font-weight:bold">Knowledge is distributed</span>
+       <br>
+       <br>
+       <span>Learned in the Project: Messtechnisch gestüzte Montage</span>
+       <br>
+       <span>Contact: Christopher Schnur +49 XXXXXX-XXX</span>
+       <br>
+       <span>Keywords: Knowledge</span>
+       <br>
+       <span>Advantage: Staff can be identified early</span>
+       <br>
+       <br>
+       <span>Often, (specific) process knowledge can only be found among individuals in the company and is thus difficult to access, which can enormously hinder data evaluation and analysis.</span>
+        <br>
+        <br>
+       <span STYLE="font-weight:bold">Meaningful data</span>
+       <br>
+       <br>
+       <span>Learned in the Project: Messtechnisch gestüzte Montage</span>
+       <br>
+       <span>Contact: Sarah Zimmer +49 XXXXXX-XXX</span>
+       <br>
+       <span>Keywords:Data</span>
+       <br>
+       <span>Advantage:  Can be considered in advance</span>
+       <br>
+       <br>
+       <span>Machine learning is built on statistical analysis and can only provide meaningful results if the information you are looking for is contained in the data. </span>
+      </mat-card-content>
+    </mat-card>
+      <br>
+      <br>
+    <div>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Comment</mat-card-title>
+          <div mat-card-avatar class="example-header-tipp"></div>
+        </mat-card-header>
+        <br>
+        <mat-divider inset></mat-divider>
+        <br>
+        <mat-card-content>
+          <form>
+            <div class="row">
+              <div class="col-sm-5 form-group">
+                <input type="text" id="comment" class="form-control" #comment>
+              </div>
+              <div class="col-sm-2 form-group">
+                <input type="file" class="file-upload" onchange="console.log(event.target.files)">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-12">
+                <button class="btn btn-success">ADD</button>
+              </div>
+            </div>
+          </form>
+          <br>
+          <ul class="list-group" >
+            <a class="list-group-item" style="cursor: pointer;"></a>
+           <br>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+      </div>
+     
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>
+
