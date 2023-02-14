@@ -1,6 +1,19 @@
-# ITecUI
+# PIA - A Concept for a Personal Information Assistant for Data Analysis and Machine Learning in industrial application
+
+# About
+PIA is a concept for a personal information assistant for data analysis and machine learning in industrial application. It has been first introduced on the NFDI4Ing Conference 2022 (https://zenodo.org/record/7362038/files/798_PIA-A_concept_for_a_personal_Information_Assistant_for_Data_Analysis.pdf?download=1). The corresponding journal paper with detailed explaination has been submitted to the journal Ing.grid.
+
+The concept has been developed as part of a cooperation between the Lab for Measurement Technology and the Chair of Assembly Systems within the framework of the ERDF project "Messtechnisch gestützte Montage" and the follow-up project" "iTecPro – Erforschung und Entwicklung von innovativen Prozessen und Technologien für die Produktion der Zukunft". Future development is carried out in the project "NFDI4Ing – the National Research Data Infrastructure for Engineering Sciences", funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – 442146713.
+
+Developers:
+Christopher Schnur, Tanja Dorst, Steffen Klein, Anne Blum, Kapil Deshmukh, Sarah Zimmer, Philipp Litzenburger, Tizian Schneider, Lennard Margies, Dr. Leonie Mende, Prof. Dr. Rainer Müller and Prof. Dr. Andreas Schütze.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.4.
+
+## Optional: Setting up a virtual environment
+Install a virtual environment like VMWare or Virtual Box with 30 GB storage. https://www.virtualbox.org/wiki/Downloads. 
+Install ubuntu (Preferably the latest LTS version https://ubuntu.com/download/desktop).
+Install vs code or any editor you prefer.
 
 ## Installing the necessary environment for development
 Install node js: `sudo apt install nodejs`
