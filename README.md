@@ -1,7 +1,8 @@
 # PIA - A Concept for a Personal Information Assistant for Data Analysis and Machine Learning in industrial application
 
 # About
-PIA is a concept for a personal information assistant for data analysis and machine learning in industrial application. It has been first introduced on the NFDI4Ing Conference 2022 (https://zenodo.org/record/7362038/files/798_PIA-A_concept_for_a_personal_Information_Assistant_for_Data_Analysis.pdf?download=1). The corresponding journal paper with detailed explaination has been submitted to the journal Ing.grid.
+PIA is a concept for a personal information assistant for data analysis and machine learning in industrial application. It has been first introduced on the NFDI4Ing Conference 2022 (https://zenodo.org/record/7362038/files/798_PIA-A_concept_for_a_personal_Information_Assistant_for_Data_Analysis.pdf?download=1).\
+The corresponding journal paper with detailed explaination has been submitted to the journal Ing.grid.
 
 The concept has been developed as part of a cooperation between the Lab for Measurement Technology and the Chair of Assembly Systems within the framework of the ERDF project "Messtechnisch gestützte Montage" and the follow-up project" "iTecPro – Erforschung und Entwicklung von innovativen Prozessen und Technologien für die Produktion der Zukunft". Future development is carried out in the project "NFDI4Ing – the National Research Data Infrastructure for Engineering Sciences", funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – 442146713.
 
