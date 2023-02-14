@@ -11,21 +11,20 @@ Christopher Schnur, Tanja Dorst, Steffen Klein, Anne Blum, Kapil Deshmukh, Sarah
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.4.
 
 ## Optional: Setting up a virtual environment
-Install a virtual environment like VMWare or Virtual Box with 30 GB storage. https://www.virtualbox.org/wiki/Downloads. 
-Install ubuntu (Preferably the latest LTS version https://ubuntu.com/download/desktop).
+Install a virtual environment like VMWare or Virtual Box with 30 GB storage (https://www.virtualbox.org/wiki/Downloads).\
+Install ubuntu (Preferably the latest LTS version https://ubuntu.com/download/desktop).\
 Install vs code or any editor you prefer.
 
 ## Installing the necessary environment for development
-Install node js: `sudo apt install nodejs`
-Install node package manager: `sudo apt install npm`
+Install node js: `sudo apt install nodejs`\
+Install node package manager: `sudo apt install npm`\
 Install Angular Cli: `sudo npm install -g @angular/cli`
 
 ## Clone the repository
 Clone this git repository to you machine with the `git clone`
 
 ## Installing necessary dependencies
-Navigate to the root folder of the project and run the command `npm install`
-This will install all the dependencies from the package.json file.
+Navigate to the root folder of the project and run the command `npm install`, this will install all the dependencies from the package.json file.
 
 ## Development server
 
