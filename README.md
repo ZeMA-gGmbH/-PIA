@@ -23,7 +23,7 @@ Install node package manager: `sudo apt install npm`\
 Install Angular Cli: `sudo npm install -g @angular/cli`
 
 ## Clone the repository
-Clone this git repository to you machine with the `git clone`
+Clone this git repository to you machine with `git clone https://github.com/ZeMA-gGmbH/-PIA.git`
 
 ## Installing necessary dependencies
 Navigate to the root folder of the project and run the command `npm install`, this will install all the dependencies from the package.json file.
