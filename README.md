@@ -30,7 +30,8 @@ Navigate to the root folder of the project (e.g. by using `cd ./-PIA`) and run t
 
 ## Development server
 
-Run `ng serve` (in the root folder .../-PIA) for a dev server. Navigate to `http://localhost:4200/` in the browser. The application will automatically reload if you change any of the source files.
+Run `ng serve` (in the root folder .../-PIA) for a dev server. Navigate to `http://localhost:4200/` in your browser to use PIA.\
+The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
