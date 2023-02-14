@@ -20,7 +20,7 @@ Install vs code or any editor you prefer.
 ## Installing the necessary environment for development
 Install node js: `sudo apt install nodejs`\
 Install node package manager: `sudo apt install npm`\
-Install Angular Cli: `sudo npm install -g @angular/cli`
+Install Angular Cli: `sudo npm install -g @angular/cli@13.3.4`
 
 ## Clone the repository
 Clone this git repository to you machine with `git clone https://github.com/ZeMA-gGmbH/-PIA.git`
