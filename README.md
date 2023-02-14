@@ -11,6 +11,7 @@ Christopher Schnur, Tanja Dorst, Steffen Klein, Anne Blum, Kapil Deshmukh, Sarah
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.4.
 
+# How to try PIA 
 ## Optional: Setting up a virtual environment
 Install a virtual environment like VMWare or Virtual Box with 30 GB storage (https://www.virtualbox.org/wiki/Downloads).\
 Install ubuntu (Preferably the latest LTS version https://ubuntu.com/download/desktop).\
